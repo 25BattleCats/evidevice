@@ -14,6 +14,7 @@
         <div class="login-content">
             <h1>ログイン</h1>
             <img src="image/icon-jun.png" alt="ログインアイコン" class="login-icon">
+            <p>ナガオカ ジュン</p>
             <br>
             <input type="password" id="password" placeholder="パスワードを入力" onkeydown="if(event.key === 'Enter') login()">
             <button onclick="login()" id="loginButton">ログイン</button>
@@ -44,13 +45,20 @@
                 <h1>LIEN</h1>
                 <span id="lienName">ジュン</span>
                 <img src="image/icon-jun.png" alt="ユーザーアイコン" class="user-icon">
+                <img src="image/icon-settings.png" alt="設定アイコン" class="settings-icon">
             </div>
             <div class="contact-list">
-                <div onclick="openChat('太郎')"><img src="taro-icon.png" alt="太郎" class="contact-icon">太郎 <span
-                        class="latest-message">こんにちは</span></div>
-                <div onclick="openChat('花子')"><img src="hanako-icon.png" alt="花子" class="contact-icon">花子 <span
-                        class="latest-message">お元気ですか？</span></div>
+                <div onclick="openChat('太郎')"><img src="taro-icon.png" alt="太郎" class="contact-icon">
+                    <p>太郎<br><span class="latest-message">こんにちは</span></div>
+                <div onclick="openChat('花子')"><img src="hanako-icon.png" alt="花子" class="contact-icon">
+                    <p>花子<br><span class="latest-message">こんにちは</span></div>
                 <!-- 他のトーク相手も追加可能 -->
+            </div>
+            <div class="footer">
+                <img src="image/" class="menu-icon">
+                <img src="image/" class="menu-icon">
+                <img src="image/" class="menu-icon">
+                <img src="image/" class="menu-icon">
             </div>
         </div>
         <div class="right-panel">
