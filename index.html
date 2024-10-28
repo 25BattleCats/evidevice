@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡易ノートパソコン</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- ログインシーン -->
+    <div id="loginScene" class="scene">
+        <div class="login-content">
+            <h1>ログイン</h1>
+            <img src="image/icon-jun.png" alt="ログインアイコン" class="login-icon">
+            <br>
+            <input type="password" id="password" placeholder="パスワードを入力" onkeydown="if(event.key === 'Enter') login()">
+            <button onclick="login()" id="loginButton">ログイン</button>
+            <p class="forgot-password">パスワードを忘れましたか？秘密の質問に答えることも可能です</p>
+        </div>
+        <div id="loadingAnimation" class="loading hidden"></div>
+    </div>
+
+    <!-- デスクトップシーン -->
+    <div id="desktopScene" class="scene hidden">
+        <div class="desktop-icons">
+            <div class="app-icon">
+                <img src="image/icon-trash.png" alt="ゴミ箱アイコン" class="app-icon-img">
+                <p>ゴミ箱</p>
+            </div>
+            <div class="app-icon" id="appLien" onclick="openLienApp()">
+                <img src="image/icon-lien.png" alt="LIENアイコン" class="app-icon-img">
+                <p>LIEN</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- トークシーン -->
+    <div id="talkScene" class="scene hidden">
+        <div class="left-panel">
+            <div class="header">
+                <button onclick="returnToDesktop()" class="back-button">&lt;</button>
+                <h1>LIEN</h1>
+                <span id="lienName">ジュン</span>
+                <img src="image/icon-jun.png" alt="ユーザーアイコン" class="user-icon">
+            </div>
+            <div class="contact-list">
+                <div onclick="openChat('太郎')"><img src="taro-icon.png" alt="太郎" class="contact-icon">太郎 <span
+                        class="latest-message">こんにちは</span></div>
+                <div onclick="openChat('花子')"><img src="hanako-icon.png" alt="花子" class="contact-icon">花子 <span
+                        class="latest-message">お元気ですか？</span></div>
+                <!-- 他のトーク相手も追加可能 -->
+            </div>
+        </div>
+        <div class="right-panel">
+            <div id="chatBox" class="chat-box">
+                <!-- チャット内容がここに挿入されます -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
