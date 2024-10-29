@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>簡易ノートパソコン</title>
+    <title>証拠デバイス - 嫌われ者の事件帖</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -47,23 +47,28 @@
                 <img src="image/icon-jun.png" alt="ユーザーアイコン" class="user-icon">
                 <img src="image/icon-settings.png" alt="設定アイコン" class="settings-icon">
             </div>
-            <div class="contact-list">
-                <div onclick="openChat('太郎')"><img src="taro-icon.png" alt="太郎" class="contact-icon">
-                    <p>太郎<br><span class="latest-message">こんにちは</span></div>
-                <div onclick="openChat('花子')"><img src="hanako-icon.png" alt="花子" class="contact-icon">
-                    <p>花子<br><span class="latest-message">こんにちは</span></div>
-                <!-- 他のトーク相手も追加可能 -->
+            <div class="contact-list" id="contactList">
+                <!-- トーク相手 -->
             </div>
             <div class="footer">
-                <img src="image/" class="menu-icon">
-                <img src="image/" class="menu-icon">
-                <img src="image/" class="menu-icon">
-                <img src="image/" class="menu-icon">
+                <img src="image/icon-menu.png" class="menu-icon">
+                <img src="image/icon-comment.png" class="menu-icon">
+                <img src="image/icon-home.png" class="menu-icon">
+                <img src="image/icon-point.png" class="menu-icon">
             </div>
         </div>
         <div class="right-panel">
+            <div class="header">
+                <h2 id="contactName"></h2>
+            </div>
             <div id="chatBox" class="chat-box">
                 <!-- チャット内容がここに挿入されます -->
+            </div>
+            <div class="footer">
+                <img src="image/icon-nointernet.png" class="menu-icon">
+                <span class="no-internet">インターネットに接続していません</span>
+                <img src="image/icon-image.png" class="menu-icon">
+                <img src="image/icon-stamp.png" class="menu-icon">
             </div>
         </div>
     </div>
