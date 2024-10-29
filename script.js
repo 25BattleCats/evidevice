@@ -3,7 +3,7 @@ function login() {
     const passwordInput = document.getElementById("password");
     const password = passwordInput.value;
 
-    if (password === "") {
+    if (password === "0302") {
         document.querySelector(".forgot-password").textContent = "ようこそ";
     
         document.querySelector(".login-content").classList.add("fade-out");
@@ -23,7 +23,7 @@ function login() {
 
 // LIENアプリを開く
 function openLienApp() {
-    document.querySelector("body").style["background-color"] = "#29d042";
+    document.querySelector("body").style["background-color"] = "#00bad6";
 
     document.getElementById("desktopScene").classList.add("fade-out");
 
