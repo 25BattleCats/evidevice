@@ -92,117 +92,57 @@ function returnToDesktop() {
 
 const allMessages = [
     [
-        { author: 1, content: "あのさ、来週飲みいかね？", time: "2024/3/18 17:35" },
-        { author: 0, content: "どうしてまたいきなり", time: "2024/3/18 19:17" },
-        { author: 1, content: "相楽から誘われてさ、他にも5,6人こえるらしいよ" },
-        { author: 1, content: "これる", time: "2024/3/18 20:19" },
-        { author: 0, content: "相楽って、また急だな" },
-        { author: 0, content: "連絡とってたん？", time: "2024/3/18 20:20" },
-        { author: 1, content: "いや、ほとんど連絡とってなかったけど" },
-        { author: 1, content: "この前久しぶりに連絡きてさ、飲もうぜって", time: "2024/3/18 20:22" },
-        { author: 0, content: "まあいいや、そうと決まれば予定空けとくわ" },
-        { author: 0, content: "来週のいつよ？", time: "2024/3/18 20:31" },
-        { author: 1, content: "まだ確定したわけじゃないけど、24の夜になると思う", time: "2024/3/18 20:33" },
-        { author: 0, content: "ok,basyokimattaraosiete", time: "2024/3/18 20:40" },
-
-        { author: 1, content: "決まったよ" },
-        { author: 1, content: "24の18時から、駅前のとりふかな", time: "2024/3/21 14:01" },
-        { author: 0, content: "あの最近できたとこか", time: "2024/3/21 18:48" },
-        { author: 1, content: "そうそう、予約はとってあるって", time: "2024/3/21 19:27" },
-        { author: 0, content: "だれがくるん？", time: "2024/3/21 19:34" },
-        { author: 0, content: "佐藤とかくんの？" },
-        { author: 0, content: "宮路とかもくんの？ww", time: "2024/3/21 19:35" },
-        { author: 1, content: "おいwやめとけってw" },
-        { author: 1, content: "とりあえず、誰がくんのかは来てからのお楽しみってことで" },
-        { author: 1, content: "じゃ、そこんとこよろしく", time: "2024/3/21 21:36" },
-        { author: 0, content: "ok　寝坊しないように気を付けるわ", time: "2024/3/21 22:03" },
-        { author: 1, content: "殴るぞw", time: "2024/3/21 22:57" },
-
-        { author: 1, content: "久しぶり、おれやで", time: "2024/ 9/6 19:47" },
-        { author: 0, content: "んな詐欺みたいな", time: "2024/ 9/6 19:48" },
-        { author: 1, content: "突然で申し訳ないんだけどさ、今度話せない？" },
-        { author: 1, content: "相談したいことがあってさ", time: "2024/ 9/6 19:50" },
-        { author: 0, content: "いやまあいいけどさ" },
-        { author: 0, content: "忙しいからそんなにタイミング取れないかも", time: "2024/ 9/6 19:50" },
-        { author: 1, content: "わかった", time: "2024/ 9/6 19:51" },
-        { author: 0, content: "今度の土曜の夜とかどう？", time: "2024/ 9/6 19:52" },
-        { author: 1, content: "今週の土曜とか空いてたりしない？", time: "2024/ 9/6 19:52" },
-        { author: 1, content: "www", time: "2024/ 9/6 19:52" },
-        { author: 0, content: "w", time: "2024/ 9/6 19:53" },
-        { author: 0, content: "ok、じゃあそれで", time: "2024/ 9/6 19:53" },
-        { author: 1, content: "マジでありがとう" },
-        { author: 1, content: "ほんと助かるわ", time: "2024/ 9/6 19:54" },
-        { author: 0, content: "そしたら家でいい？なんかいろいろ用意しとくからさ", time: "2024/ 9/6 19:57" },
-        { author: 1, content: "おっけー、俺もなんか買っていくわ", time: "2024/ 9/6 19:57" },
-        { author: 0, content: "じゃあ七時ぐらいにうち来てよ", time: "2024/ 9/6 19:58" },
-        { author: 1, content: "わかった、サンキュー", time: "2024/ 9/6 19:58" }
+        { author: 1, content: "送信された音源<br>[音源.mp3] 1時間30分<br>再生しますか？", time: "24/10/31 23:00" }
     ], [
-        { author: 0, content: "ちょやめてやはずいじゃん" },
-        { author: 0, content: "履歴消すわ", time: "2024/ 9/6 19:48" },
-        { author: 1, content: "ごめんって別に晒さないから安心してや", time: "2024/ 9/6 19:48" },
-        { author: 0, content: "さらさないならいいや" },
-        { author: 0, content: "ドーナツで、穴を開け忘れる反則", time: "2024/ 9/6 19:48" },
-        { author: 1, content: "これはさすがにひどいな（）" },
-        { author: 1, content: "さらしていい？" },
-        { author: 1, content: "てか晒すわ（）", time: "2024/ 9/6 19:48" },
-        { author: 0, content: "やめてやごめんって", time: "2024/ 9/6 19:48" },
-        { author: 1, content: "Ｚで晒したら万バズしたわ（） ありがと" },
-        { author: 0, content: "最悪すぎるんだけどw" },
-        { author: 0, image: "image/background.png" }
+        { author: 1, content: "久しぶり、おれやで", time: "24/10/28 19:34" },
+        { author: 0, content: "んな詐欺みたいな", time: "24/10/28 19:48" },
+        { author: 1, content: "突然で申し訳ないんだけどさ、<br>今度話せない？<br>相談したいことがあってさ", time: "24/10/28 19:50" },
+        { author: 0, content: "いやまぁいいけどさ<br>忙しいくて、タイミングとれないかも", time: "24/10/28 19:50" },
+        { author: 1, content: "わかった" },
+        { author: 0, content: "10/31 とかどう？", time: "24/10/28 19:52" },
+        { author: 1, content: "10/31 とか空いてたりしない？" },
+        { author: 0, content: "www<br>ok、じゃあそれで", time: "24/10/28 19:53" },
+        { author: 1, content: "マジでありがとう<br>ほんと助かるわ", time: "24/10/28 19:54" },
+        { author: 0, content: "そしたら家でいい？<br>なんかいろいろ用意しとくからさ", time: "24/10/28/ 19:57" },
+        { author: 1, content: "オッケー、俺もなんか買ってくわ", time: "24/10/28/ 19:57" },
+        { author: 0, content: "じゃ、17 時ぐらいにうちに来てよ", time: "24/10/28 19:58" },
+        { author: 1, content: "わかった、サンキュー", time: "24/10/28 19:58" },
+        { author: 1, content: "//奈賀岡、千田、宮路が映っている写真", time: "24/10/31 17:50" },
+        { author: 1, image: "image/pictureee.png", time: "24/10/31 17:50" },
+        { author: 1, content: "さっきの写真な", time: "24/10/31 17:50" },
+        { author: 0, content: "ありがと", time: "24/10/31 17:58" }
     ], [
-        { author: 1, content: "いいビジネスがあるんだけど、5分で簡単に始められるから、興味があったらこのリンクにアクセスしてくれよ！" }
+        { author: 1, content: "申し訳無いんだけどさ、<br>事務作業少しやってくれない？", time: "24/10/21 10:02" },
+        { author: 1, content: "明日までにやんなきゃだけど<br>プレゼンのスライド作らなきゃでさ", time: "24/10/21 10:03" },
+        { author: 1, content: "今度飯おごるから！頼む！", time: "24/10/21 10:05" },
+        { author: 0, content: "食べ放題な", time: "24/10/21 10:12" },
+        { author: 1, content: "全然いいよ！マジで助かるわ！", time: "24/10/21 10:13" },
+        { author: 1, content: "そしたらメールで送るからさ、そこからお願い！<br>ありがとう！", time: "24/10/21 10:15" },
+        { author: 0, content: "別にいいよw<br>また今度俺のも手伝ってや～", time: "24/10/21 10:21" }
     ], [
-        { author: 1, content: "いつもの鯖でゲームしてるから、良かったら来て" },
-        { author: 1, content: "人数が足りなくてさ", time: "2024/ 9/6 19:48" },
-        { author: 0, content: "今日の仕事があと一時間ぐらいで終わるから終わったら行くわ", time: "2024/ 9/6 19:48" },
-        { author: 1, content: "ありがとな！　待ってるわ" }
+        { author: 1, content: "本日のクーポンは...<br>#ドッカラファイン 全品 30% on" },
+        { author: 1, content: "本日のクーポンは...<br>#MgMg burger ポテト 有料" },
+        { author: 1, content: "本日のクーポンは...<br>#エイトテン はちチキ 全種200% on" },
+        { author: 1, content: "本日のクーポンは...<br>#オンボロ電機(株) 無料" }
     ], [
-        { author: 1, content: "助けてもらってもいいですか？明日が無いんです。どうですか？" }
+        { author: 1, content: "いつもの鯖でゲームしてるから<br>良かったら来て<br>人数が足りなくてさ", time: "2024/09/06 19:28" },
+        { author: 0, content: "仕事があと一時間くらいでおわるから<br>終わったら行くわ", time: "24/09/06 19:47" },
+        { author: 1, content: "ありがとな！待ってるわ", time: "24/09/06 19:48" }
     ], [
-        { author: 1, content: "ぼくの最新あるばむがリリースされたよ～　みんな聞いてみてね～<br>htttps:/Utube.com/1wdk32r" },
-        { author: 1, content: "今日の22:00から配信やるよ～　なんとあの配信者さんとコラボ！？　見てね～" }
+        { author: 1, content: "ぼくの最新あるばむがリリース！<br>絶対きいてよ～", time: "24/08/26 18:26" },
+        { author: 1, content: "今日の 22時から配信!!<br>謎の配信者 Z とコラボ！", time: "24/08/28 14:30" }
     ], [
-        { author: 1, content: "申し訳ないんだけどさ、事務作業少しやってくれない？" },
-        { author: 1, content: "明日までにやんなきゃなんだけど、プレゼンのスライド作らなきゃでさ" },
-        { author: 1, content: "今度飯おごるから！頼む！" },
-        { author: 0, content: "食べ放題な" },
-        { author: 1, content: "全然いいよ！マジで助かるわ！" },
-        { author: 1, content: "そしたら仕事のメールで送るからさ！そこからお願い！ありがとう！" },
-        { author: 0, content: "別にいいよw " },
-        { author: 0, content: "また今度俺のも手伝ってや～" }
+        { author: 0, content: "よろしくお願いいたします！", time: "24/03/12 17:31" },
+        { author: 1, content: "こちらこそよろしくおねがいします。", time: "24/03/12 17:32" }
     ], [
-        { author: 1, content: "今日のクーポン　アソコカラファイン　全品30%on" },
-        { author: 1, content: "今日のクーポン　MOUS burger ポテト　有料" },
-        { author: 1, content: "今日のクーポン　エイトトゥウェルブ　はちチキ　全種類200%on" },
-        { author: 1, content: "今日のクーポン　ヤマモト電機　蛍光灯　70本無料" }
+        { author: 1, content: "簡単にできるいいビジネスがあるんだ<br>このサイトにアクセスしてくれよな！" },
+        { author: 1, content: "https:/tpshtpppstps1729.io" }
     ], [
-        { author: 1, content: "明日使う書類、今日中にデータ送ってって言ってたけどさ、印刷までお願いしちゃっていい？" },
-        { author: 1, content: "取引先とのコミュニケーションが長引いちゃいそうでさ、お得意様だからちゃんとしなきゃいけなくて" },
-        { author: 0, content: "了解です！軽い仕事なので僕がやっておきますね！　20部でいいんですよね？" },
-        { author: 1, content: "25部お願いしていい？一応多めに刷っておいて！" },
-        { author: 0, content: "了解です！先輩のデスクにおいておきますね！" },
-        { author: 0, content: "置いておきました！" },
-        { author: 1, content: "ありがとう！後はやっておくから任せて！" }
+        { author: 1, content: "今から送るリンクに書かれている３つのことを実践するだけで半年で社長になれる！？<br>httttps://sarahsarah.com/23", time: "21/06/30 4:54" }
     ], [
-        { author: 0, content: "お誕生日おめでとう！" },
-        { author: 1, content: "ありがと～" },
-        { author: 1, content: "わざわざごめんね～プレゼントまでもらっちゃって" },
-        { author: 0, content: "全然いいよ～ぜひ使ってね～" }
-    ], [
-        { author: 0, content: "よろしくお願いいたします！" },
-        { author: 1, content: "こちらこそよろしくおねがいします！" }
-    ], [
-        { author: 1, content: "友達登録ありがとうございます！かくさとうちゃんの公式LIENです！" }
-    ], [
-        { author: 1, content: "友達登録ありがとね～！こおりさとうちゃんの公式LIENだよ〜！" }
-    ], [
-        { author: 1, content: "友達登録していただきありがとうございます" }
-    ], [
-        { author: 1, content: "このアイドルめっちゃよくね<br>https://Utube.com/239qefg9a" },
-        { author: 0, content: "めっちゃええな" },
-        { author: 0, content: "登録してきたわw" }
-    ], [
-        { author: 1, content: "今から送るリンクに書かれている3つの事を実践するだけで半年で社長になれる！<br>https://sasuganinote.com/Koh_minagawa/23aef7" }
+        { author: 0, content: "しかも今日は俺の誕生日だし<br>なんかプレゼントないわけ？", time: "13/03/02 16:06" },
+        { author: 0, content: "いやー、卒業式だるかったわー<br>", time: "13/03/02 16:06" },
+        { author: 0, content: "バカ留年乙w<br>小学校からやり直せよお前", time: "13/03/03 21:28" }
     ]
 ];
 
