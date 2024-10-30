@@ -8,6 +8,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: black;
+    scroll-behavior: smooth;
 }
 
 /* 共通シーンスタイル */
@@ -319,6 +320,12 @@ body {
     font-size: 18px;
     border-radius: 10px;
     position: relative;
+}
+
+.time-important {
+    color: rgb(255, 0, 76);
+    text-decoration: underline;
+    font-size: 130%;
 }
 
 .chat-message::before {
