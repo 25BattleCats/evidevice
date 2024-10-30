@@ -92,7 +92,7 @@ function returnToDesktop() {
 
 const allMessages = [
     [
-        { author: 1, content: "送信された音源<br>[音源.mp3] 1時間30分<br>再生しますか？", time: "24/10/31 23:00" }
+        { author: 1, content: "送信された音源<br>[音源.mp3] 1時間30分<br>インターネットに接続されてないため再生できません", time: "24/10/31 23:00", timeImportant: true }
     ], [
         { author: 1, content: "久しぶり、おれやで", time: "24/10/28 19:34" },
         { author: 0, content: "んな詐欺みたいな", time: "24/10/28 19:48" },
@@ -107,7 +107,6 @@ const allMessages = [
         { author: 1, content: "オッケー、俺もなんか買ってくわ", time: "24/10/28/ 19:57" },
         { author: 0, content: "じゃ、17 時ぐらいにうちに来てよ", time: "24/10/28 19:58" },
         { author: 1, content: "わかった、サンキュー", time: "24/10/28 19:58" },
-        { author: 1, content: "//奈賀岡、千田、宮路が映っている写真", time: "24/10/31 17:50" },
         { author: 1, image: "image/pictureee.png", time: "24/10/31 17:50" },
         { author: 1, content: "さっきの写真な", time: "24/10/31 17:50" },
         { author: 0, content: "ありがと", time: "24/10/31 17:58" }
@@ -200,9 +199,14 @@ function openChat(contactName) {
         } else {
             messageDiv.innerHTML = `<img class="author-icon" src="${authorIcon[author]}" > ${msg.content}`;
         }
-        if (msg.time) messageDiv.innerHTML += `<p>${authorName[author]} ・ ${msg.time}</p>`;
-        else messageDiv.innerHTML += `<p>${authorName[author]}</p>`;
+        messageDiv.innerHTML += `<p>${authorName[author]}` + (msg.time ?
+            (` ・ <span` + (msg.timeImportant ? ` class="time-important"` : ``) + `>${msg.time}</span>`)
+            : ``) + `</p>`;
 
         chatBox.appendChild(messageDiv);
     });
+
+    setTimeout(() => {
+        chatBox.scroll(0, chatBox.scrollHeight - chatBox.clientHeight);
+    }, 100);
 }
