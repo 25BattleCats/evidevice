@@ -1,50 +1,93 @@
+// 初期設定
+const latestActive = new Date().getTime();
+
+const loginScene = document.getElementById("loginScene");
+const desktopScene = document.getElementById("desktopScene");
+const talkScene = document.getElementById("talkScene");
+currentScece = loginScene;
+
+
+// フェードインして画面を移動
+function changeScene(toScene, backgroundColor) {
+    document.querySelector("body").style["background-color"] = backgroundColor;
+    document.querySelector("body").inert = 1;
+    currentScece.classList.add("fade-out");
+
+    setTimeout(() => {
+        currentScece.classList.add("hidden");
+        currentScece.classList.remove("fade-out");
+        toScene.classList.remove("hidden");
+        currentScece = toScene;
+        document.querySelector("body").inert = 0;
+    }, 200);
+}
+
+
 // パスワードチェックとシーン移動
 function login() {
     const passwordInput = document.getElementById("password");
-    const password = passwordInput.value;
 
-    if (password === "0302") {
+    if (passwordInput.value === "0302") {
         document.querySelector(".forgot-password").textContent = "ようこそ";
-    
+        passwordInput.value = "";
+
         document.querySelector(".login-content").classList.add("fade-out");
-        const loadingAnimation = document.getElementById("loadingAnimation");
-        loadingAnimation.classList.remove("hidden");
+        document.querySelector("#loadingAnimation").classList.remove("hidden");
 
         // ローディングアニメーション後デスクトップに移行
         setTimeout(() => {
+            resetActivity();
+
             document.getElementById("loginScene").classList.add("hidden");
+
+            document.querySelector(".forgot-password").textContent = "パスワードを忘れましたか？秘密の質問に答えることも可能です";
+            document.querySelector(".login-content").classList.remove("fade-out");
+            document.querySelector("#loadingAnimation").classList.add("hidden");
+
             document.getElementById("desktopScene").classList.remove("hidden");
-        }, 300);
+            currentScece = desktopScene;
+        }, 500);
     } else {
         passwordInput.value = "";
         alert("パスワードが違います。");
     }
 }
 
+
+// 一定時間操作がない場合ロック画面へ
+
+let lastActivityTime = Date.now(), timeoutID;
+
+function trackInactivity() {
+    HTMLFormControlsCollection.log
+    const currentTime = Date.now();
+    if (currentScece != loginScene && currentTime - lastActivityTime >= 6000) {
+        changeScene(loginScene, "#000");
+    }
+    timeoutID = requestAnimationFrame(trackInactivity);
+}
+
+timeoutID = requestAnimationFrame(trackInactivity);
+
+function resetActivity() {
+    lastActivityTime = Date.now();
+}
+
+window.addEventListener("mousemove", resetActivity);
+window.addEventListener("keydown", resetActivity);
+window.addEventListener("click", resetActivity);
+window.addEventListener("scroll", resetActivity);
+
+
 // LIENアプリを開く
 function openLienApp() {
-    document.querySelector("body").style["background-color"] = "#00bad6";
-
-    document.getElementById("desktopScene").classList.add("fade-out");
-
-    setTimeout(() => {
-        document.getElementById("desktopScene").classList.add("hidden");
-        document.getElementById("desktopScene").classList.remove("fade-out");
-        document.getElementById("talkScene").classList.remove("hidden");
-    }, 300);
+    document.querySelector("body").style["background-color"] = "#005663";
+    changeScene(talkScene, "#005663");
 }
 
 // トークシーンに戻るボタン
 function returnToDesktop() {
-    document.querySelector("body").style["background-color"] = "black";
-
-    document.getElementById("talkScene").classList.add("fade-out");
-
-    setTimeout(() => {
-        document.getElementById("talkScene").classList.add("hidden");
-        document.getElementById("talkScene").classList.remove("fade-out");
-        document.getElementById("desktopScene").classList.remove("hidden");
-    }, 300);
+    changeScene(desktopScene, "#000");
 }
 
 const allMessages = [
@@ -104,7 +147,8 @@ const allMessages = [
         { author: 1, content: "てか晒すわ（）", time: "2024/ 9/6 19:48" },
         { author: 0, content: "やめてやごめんって", time: "2024/ 9/6 19:48" },
         { author: 1, content: "Ｚで晒したら万バズしたわ（） ありがと" },
-        { author: 0, content: "最悪すぎるんだけどw" }
+        { author: 0, content: "最悪すぎるんだけどw" },
+        { author: 0, image: "image/background.png" }
     ], [
         { author: 1, content: "いいビジネスがあるんだけど、5分で簡単に始められるから、興味があったらこのリンクにアクセスしてくれよ！" }
     ], [
@@ -164,47 +208,36 @@ const allMessages = [
 
 const authorName = [
     "ジュン",
-    "Naoya Senda",
-    "もちづき",
-    "内藤@実績多数！投資セミナー",
-    "mz",
-    "michel sarah",
-    "Aくん　公式",
-    "中原　俊",
-    "LIENクーポン",
-    "Yuka Kimishima",
-    "桃佳",
-    "瀬良　涼朶",
-    "kakusatouchan　しゅがめる公式",
-    "koorisatouchan　しゅがめる公式",
-    "koorisatouchan　しゅがめる公式",
-    "KYO",
-    "KOH MINAGAWA@半年社長"
+    "unknown",
+    "N.千田",
+    "中原 俊",
+    "LIEN クーポン",
+    "ミヤモト",
+    "ターン∀",
+    "モモ",
+    "内藤 投資ゼミ",
+    "サラ@半年社長",
+    "宮路 凛人"
 ];
 
 const authorIcon = [
-    "image/icon-jun.png",
+    "icon/jun.png",
+    "icon/unknown.png",
     "icon/senda.png",
-    "icon/",
-    "icon/Naito.png",
-    "icon/mz.PNG",
-    "icon/mic.png",
-    "icon/Akun.png",
-    "icon/senpai.png",
+    "icon/nakahara.png",
     "icon/coupon.png",
-    "icon/",
+    "icon/mz.PNG",
+    "icon/turn.png",
     "icon/momo.png",
-    "icon/",
-    "icon/",
-    "icon/",
-    "icon/",
-    "icon/",
-    "icon/"
+    "icon/naito.png",
+    "icon/mic.png",
+    "icon/miyaji.png"
 ];
 
 for (let i = 1; i < authorName.length; i++) {
     let contactList = document.getElementById("contactList");
-    contactList.innerHTML += `<div onclick="openChat('${i}')" class="contact-button"><img src="${authorIcon[i]}" class="contact-icon"><p>${authorName[i]}<br><span class="latest-message">${allMessages[i-1][allMessages[i-1].length-1].content}</span></p></div>`;
+    const latestMsg = allMessages[i - 1][allMessages[i - 1].length - 1].image ? "画像が送信されました" : allMessages[i - 1][allMessages[i - 1].length - 1].content;
+    contactList.innerHTML += `<div onclick="openChat('${i}')" class="contact-button"><img src="${authorIcon[i]}" class="contact-icon"><p>${authorName[i]}<br><span class="latest-message">${latestMsg}</span></p></div>`;
 }
 
 // チャットを開く
@@ -214,16 +247,22 @@ function openChat(contactName) {
 
     document.getElementById("contactName").textContent = authorName[contactName];
 
-    const messages = allMessages[contactName-1];
+    const messages = allMessages[contactName - 1];
 
     // メッセージを表示
     messages.forEach(msg => {
         const messageDiv = document.createElement("div");
         const author = (msg.author === 0 ? 0 : contactName);
         messageDiv.classList.add("chat-message", author === 0 ? "right" : "left");
-        messageDiv.innerHTML = `<img src="${authorIcon[author]}" > ${msg.content}`;
-        if(msg.time) messageDiv.innerHTML += `<p>${authorName[author]} ・ ${msg.time}</p>`;
+
+        if (msg.image) {
+            messageDiv.innerHTML = `<img class="author-icon" src="${authorIcon[author]}" > <img class="embed" src="${msg.image}" >`;
+        } else {
+            messageDiv.innerHTML = `<img class="author-icon" src="${authorIcon[author]}" > ${msg.content}`;
+        }
+        if (msg.time) messageDiv.innerHTML += `<p>${authorName[author]} ・ ${msg.time}</p>`;
         else messageDiv.innerHTML += `<p>${authorName[author]}</p>`;
+
         chatBox.appendChild(messageDiv);
     });
 }
