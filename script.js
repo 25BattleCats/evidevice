@@ -1,5 +1,6 @@
 // 初期設定
 const latestActive = new Date().getTime();
+wrongPassword = 0;
 
 const loginScene = document.getElementById("loginScene");
 const desktopScene = document.getElementById("desktopScene");
@@ -19,49 +20,91 @@ function changeScene(toScene, backgroundColor) {
         toScene.classList.remove("hidden");
         currentScece = toScene;
         document.querySelector("body").inert = 0;
-    }, 200);
+    }, 400);
+}
+
+
+function moveToSecret(scene) {
+    wrongPassword = 0;
+
+    document.querySelector(".login-content").classList.add("fade-out");
+    document.querySelector("#loadingAnimation").classList.remove("hidden");
+
+    setTimeout(() => {
+        document.querySelector(".login-content").classList.remove("fade-out");
+        document.querySelector("#loadingAnimation").classList.add("hidden");
+
+        document.querySelector(".login-content").classList.add("hidden");
+        document.querySelector(".login-content").classList.remove("hidden");
+
+        if (scene) {
+            document.querySelector("#secretVarify").classList.add("hidden");
+            document.querySelector("#varify").classList.remove("hidden");
+        } else {
+            document.querySelector("#varify").classList.add("hidden");
+            document.querySelector("#secretVarify").classList.remove("hidden");
+        }
+
+        currentScece = desktopScene;
+    }, 300);
 }
 
 
 // パスワードチェックとシーン移動
+document.querySelector("#secretQuestion").addEventListener("click", () => {
+    moveToSecret();
+});
+document.querySelector("#pinQuestion").addEventListener("click", () => {
+    moveToSecret(1);
+});
+
 function login() {
-    const passwordInput = document.getElementById("password");
+    document.getElementById("password").value = "";
+    wrongPassword++;
+
+    alert("PINが違います。");
+
+    if (wrongPassword >= 2) {
+        moveToSecret();
+    }
+}
+
+function secretLogin() {
+    const passwordInput = document.getElementById("secretPassword");
 
     if (passwordInput.value === "0302") {
-        document.querySelector(".forgot-password").textContent = "ようこそ";
-        passwordInput.value = "";
-
         document.querySelector(".login-content").classList.add("fade-out");
         document.querySelector("#loadingAnimation").classList.remove("hidden");
+        document.querySelector("#welcome").classList.remove("hidden");
 
-        // ローディングアニメーション後デスクトップに移行
         setTimeout(() => {
-            resetActivity();
+            document.querySelector("#loginScene").classList.add("hidden");
 
-            document.getElementById("loginScene").classList.add("hidden");
-
-            document.querySelector(".forgot-password").textContent = "パスワードを忘れましたか？秘密の質問に答えることも可能です";
             document.querySelector(".login-content").classList.remove("fade-out");
             document.querySelector("#loadingAnimation").classList.add("hidden");
+            document.querySelector("#welcome").classList.add("hidden");
 
-            document.getElementById("desktopScene").classList.remove("hidden");
+            document.querySelector("#desktopScene").classList.remove("hidden");
             currentScece = desktopScene;
-        }, 500);
+        }, 300);
     } else {
         passwordInput.value = "";
-        alert("パスワードが違います。");
+        alert("誕生日が違います。");
     }
 }
 
 
 // 一定時間操作がない場合ロック画面へ
-
+/*
 let lastActivityTime = Date.now(), timeoutID;
 
 function trackInactivity() {
-    HTMLFormControlsCollection.log
     const currentTime = Date.now();
     if (currentScece != loginScene && currentTime - lastActivityTime >= 6000) {
+        document.querySelector("#varify").classList.remove("hidden");
+        document.querySelector("#secretVarify").classList.add("hidden");
+        document.querySelector("#password").value = "";
+        document.querySelector("#secretPassword").value = "";
         changeScene(loginScene, "#000");
     }
     timeoutID = requestAnimationFrame(trackInactivity);
@@ -77,11 +120,10 @@ window.addEventListener("mousemove", resetActivity);
 window.addEventListener("keydown", resetActivity);
 window.addEventListener("click", resetActivity);
 window.addEventListener("scroll", resetActivity);
-
+*/
 
 // LIENアプリを開く
 function openLienApp() {
-    document.querySelector("body").style["background-color"] = "#005663";
     changeScene(talkScene, "#005663");
 }
 
@@ -98,13 +140,13 @@ const allMessages = [
         { author: 0, content: "んな詐欺みたいな", time: "24/10/28 19:48" },
         { author: 1, content: "突然で申し訳ないんだけどさ、<br>今度話せない？<br>相談したいことがあってさ", time: "24/10/28 19:50" },
         { author: 0, content: "いやまぁいいけどさ<br>忙しいくて、タイミングとれないかも", time: "24/10/28 19:50" },
-        { author: 1, content: "わかった" },
+        { author: 1, content: "わかった", time: "24/10/28 19:51" },
         { author: 0, content: "10/31 とかどう？", time: "24/10/28 19:52" },
-        { author: 1, content: "10/31 とか空いてたりしない？" },
+        { author: 1, content: "10/31 とか空いてたりしない？", time: "24/10/28 19:52" },
         { author: 0, content: "www<br>ok、じゃあそれで", time: "24/10/28 19:53" },
         { author: 1, content: "マジでありがとう<br>ほんと助かるわ", time: "24/10/28 19:54" },
-        { author: 0, content: "そしたら家でいい？<br>なんかいろいろ用意しとくからさ", time: "24/10/28/ 19:57" },
-        { author: 1, content: "オッケー、俺もなんか買ってくわ", time: "24/10/28/ 19:57" },
+        { author: 0, content: "そしたら家でいい？<br>なんかいろいろ用意しとくからさ", time: "24/10/28 19:57" },
+        { author: 1, content: "オッケー、俺もなんか買ってくわ", time: "24/10/28 19:57" },
         { author: 0, content: "じゃ、17 時ぐらいにうちに来てよ", time: "24/10/28 19:58" },
         { author: 1, content: "わかった、サンキュー", time: "24/10/28 19:58" },
         { author: 1, image: "image/pictureee.png", time: "24/10/31 17:50" },
@@ -119,12 +161,12 @@ const allMessages = [
         { author: 1, content: "そしたらメールで送るからさ、そこからお願い！<br>ありがとう！", time: "24/10/21 10:15" },
         { author: 0, content: "別にいいよw<br>また今度俺のも手伝ってや～", time: "24/10/21 10:21" }
     ], [
-        { author: 1, content: "本日のクーポンは...<br>#ドッカラファイン 全品 30% on" },
-        { author: 1, content: "本日のクーポンは...<br>#MgMg burger ポテト 有料" },
-        { author: 1, content: "本日のクーポンは...<br>#エイトテン はちチキ 全種200% on" },
-        { author: 1, content: "本日のクーポンは...<br>#オンボロ電機(株) 無料" }
+        { author: 1, content: "本日のクーポンは...<br>#ドッカラファイン 全品 30% on", time: "24/10/10 19:18" },
+        { author: 1, content: "本日のクーポンは...<br>#MgMg burger ポテト 有料", time: "24/10/03 18:46" },
+        { author: 1, content: "本日のクーポンは...<br>#エイトテン はちチキ 全種 200% on", time: "24/09/26 11:12" },
+        { author: 1, content: "本日のクーポンは...<br>#オンボロ電機(株) 無料", time: "24/09/19 19:29" }
     ], [
-        { author: 1, content: "いつもの鯖でゲームしてるから<br>良かったら来て<br>人数が足りなくてさ", time: "2024/09/06 19:28" },
+        { author: 1, content: "いつもの鯖でゲームしてるから<br>良かったら来て<br>人数が足りなくてさ", time: "24/09/06 19:28" },
         { author: 0, content: "仕事があと一時間くらいでおわるから<br>終わったら行くわ", time: "24/09/06 19:47" },
         { author: 1, content: "ありがとな！待ってるわ", time: "24/09/06 19:48" }
     ], [
@@ -134,8 +176,8 @@ const allMessages = [
         { author: 0, content: "よろしくお願いいたします！", time: "24/03/12 17:31" },
         { author: 1, content: "こちらこそよろしくおねがいします。", time: "24/03/12 17:32" }
     ], [
-        { author: 1, content: "簡単にできるいいビジネスがあるんだ<br>このサイトにアクセスしてくれよな！" },
-        { author: 1, content: "https:/tpshtpppstps1729.io" }
+        { author: 1, content: "簡単にできるいいビジネスがあるんだ<br>このサイトにアクセスしてくれよな！", time: "24/02/12 14:47" },
+        { author: 1, content: "https:/tpshtpppstps1729.io", time: "24/02/12 14:47" }
     ], [
         { author: 1, content: "今から送るリンクに書かれている３つのことを実践するだけで半年で社長になれる！？<br>httttps://sarahsarah.com/23", time: "21/06/30 4:54" }
     ], [
@@ -161,7 +203,7 @@ const authorName = [
 
 const authorIcon = [
     "icon/jun.png",
-    "icon/unknown.png",
+    "icon/unko.png",
     "icon/senda.png",
     "icon/nakahara.png",
     "icon/coupon.png",
