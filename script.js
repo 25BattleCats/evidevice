@@ -95,16 +95,21 @@ function secretLogin() {
 
 
 // 一定時間操作がない場合ロック画面へ
-/*
+
 let lastActivityTime = Date.now(), timeoutID;
 
 function trackInactivity() {
     const currentTime = Date.now();
-    if (currentScece != loginScene && currentTime - lastActivityTime >= 6000) {
+    if (currentScece != loginScene && currentTime - lastActivityTime >= 30000) {
         document.querySelector("#varify").classList.remove("hidden");
         document.querySelector("#secretVarify").classList.add("hidden");
         document.querySelector("#password").value = "";
         document.querySelector("#secretPassword").value = "";
+
+        document.querySelector("#contactName").textContent = "";
+        document.querySelector("#chatBox").innerHTML = `<img src="image/icon-lien2.png" class="centered-talk">
+            <p class="centered-talk">トーク履歴はここに表示されます</p>`;
+
         changeScene(loginScene, "#000");
     }
     timeoutID = requestAnimationFrame(trackInactivity);
@@ -120,7 +125,7 @@ window.addEventListener("mousemove", resetActivity);
 window.addEventListener("keydown", resetActivity);
 window.addEventListener("click", resetActivity);
 window.addEventListener("scroll", resetActivity);
-*/
+
 
 // LIENアプリを開く
 function openLienApp() {
