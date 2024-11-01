@@ -97,12 +97,17 @@ body {
 
 #forgotPassword, #secretForgotPassword {
     margin-top: 12px;
-    font-size: 0.8em;
+    font-size: 1em;
     color: #ddd;
 }
 
 #secretVarify p {
     margin: 10px;
+}
+
+#secretQuestion {
+    color: #fff;
+    font-weight: bold;
 }
 
 #loadingCircle {
